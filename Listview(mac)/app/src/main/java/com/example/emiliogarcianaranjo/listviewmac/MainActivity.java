@@ -7,28 +7,24 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ListView lista;
+    private ListView lvLista;
+
+    Pelicula[] lista= {
+            new Pelicula(1, "Batman", "www.es.es"),
+            new Pelicula(1, "Batman", "www.es.es"),
+            new Pelicula(1, "Batman", "www.es.es"),
+            new Pelicula(1, "Batman", "www.es.es"),
+            new Pelicula(1, "Batman", "www.es.es"),
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lista = (ListView)findViewById(R.id.lvLista);
+        lvLista = (ListView)findViewById(R.id.lvLista);
+        PeliculaAdapter pa = new PeliculaAdapter(this, lista);
+        lvLista.setAdapter(pa);
 
-        // Array con las opciones
-        final String[] datos = new String[]{
-                "Opcion 1",
-                "Opcion 2",
-                "Opcion 3",
-                "Opcion 4",
-                "Opcion 5",
-        };
-
-        // Adaptador
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
-
-        // Establecemos el adaptador del listview
-        lista.setAdapter(adaptador);
     }
 }
